@@ -1,0 +1,59 @@
+import { Filters } from '@/models/Filters';
+import { Button, Flex } from '@mantine/core';
+import { FastArrowLeft, FastArrowRight, NavArrowLeft, NavArrowRight } from 'iconoir-react';
+
+const Pagination = (props: {
+  filters: Filters;
+  lastPage: number;
+  setFilters: (filters: Filters) => void;
+  featureCount: number;
+}) => {
+    const next = () => {
+        props.setFilters({
+          ...props.filters,
+          page: props.filters.page + 1,
+          count: props.filters.count + 20,
+        });
+      };
+    
+      const prev = () => {
+        props.setFilters({
+          ...props.filters,
+          page: props.filters.page - 1,
+          count: props.filters.count - 20,
+        });
+      };
+      const first = () => {
+        props.setFilters({
+          ...props.filters,
+          page: 1,
+          count: 0,
+        });
+      };
+    
+      const last = () => {
+        props.setFilters({
+          ...props.filters,
+          page: props.lastPage,
+          count: props.featureCount - (props.featureCount % 20 === 0 ? 20 : props.featureCount % 20),
+        });
+      };
+  return (
+    <Flex justify={'center'} align={'center'} style={{ width: '100%' }} m={'sm'}>
+      <Button disabled={props.filters.page <= 1} onClick={first} mr={'lg'}>
+        <FastArrowLeft></FastArrowLeft>
+      </Button>
+      <Button disabled={props.filters.page <= 1} onClick={prev} mr={'lg'}>
+        <NavArrowLeft></NavArrowLeft>
+      </Button>
+      <h3>{props.filters.page}</h3>
+      <Button disabled={props.filters.page >= props.lastPage} onClick={next} ml={'lg'}>
+        <NavArrowRight></NavArrowRight>
+      </Button>
+      <Button disabled={props.filters.page >= props.lastPage} onClick={last} ml={'lg'}>
+        <FastArrowRight></FastArrowRight>
+      </Button>
+    </Flex>
+  );
+};
+export default Pagination;

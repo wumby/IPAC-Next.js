@@ -1,0 +1,90 @@
+'use client';
+import { useEffect, useMemo, useState } from 'react';
+import { Feature } from '../models/Features';
+import { Filters } from '../models/Filters';
+import debounce from 'lodash.debounce';
+import { Category } from '../models/Category';
+import { Flex, Select, TextInput } from '@mantine/core';
+import Show from './Show';
+import Pagination from './Pagination';
+import FeaturesCards from './FeaturesCards';
+
+const FeaturesDisplay = (props: {
+  features: Feature[];
+  filters: Filters;
+  setFilters: (filters: Filters) => void;
+  lastPage: number;
+  featureCount: number;
+  categories: Category[];
+  categoryMap: Map<number, string>;
+}) => {
+  const DEBOUNCE_TIME_MS = 500;
+  const categoryData = props.categories.map((item) => ({
+    value: item.sid.id.toString(),
+    label: item.name,
+  }));
+  const [searchParam, setSearchParam] = useState<string | null>(null);
+
+  const search = useMemo(
+    () =>
+      debounce((s: string) => {
+        setSearchParam(s);
+      }, DEBOUNCE_TIME_MS),
+    [props.filters.s]
+  );
+
+  useEffect(() => {
+    if (searchParam !== null)
+      props.setFilters({
+        ...props.filters,
+        s: searchParam,
+        page: 1,
+        count: 0,
+      });
+  }, [searchParam]);
+
+  const filterCategory = (category: string) => {
+    props.setFilters({
+      ...props.filters,
+      category: category,
+      page: 1,
+      count: 0,
+    });
+  };
+
+  return (
+    <>
+      <Flex justify={'space-evenly'} align={'center'} style={{ width: '100%' }}>
+        <Select
+          label={'Category'}
+          data={categoryData}
+          onChange={(value) => filterCategory(value!)}
+          placeholder="Select Category"
+        />
+        <TextInput label={'Search'} onChange={(e) => search(e.target.value)} placeholder="Search" />
+      </Flex>
+      <Show when={props.features.length !== 0}>
+        <Pagination
+          filters={props.filters}
+          featureCount={props.featureCount}
+          lastPage={props.lastPage}
+          setFilters={props.setFilters}
+        ></Pagination>
+      </Show>
+      <FeaturesCards features={props.features} categoryMap={props.categoryMap} />
+      <Show when={props.features.length !== 0}>
+        <Pagination
+          filters={props.filters}
+          featureCount={props.featureCount}
+          lastPage={props.lastPage}
+          setFilters={props.setFilters}
+        ></Pagination>
+      </Show>
+      <Show when={props.features.length === 0}>
+        <h1>Your search returned no results</h1>
+      </Show>
+    </>
+  );
+};
+
+export default FeaturesDisplay;
