@@ -8,8 +8,8 @@ import { Category } from '../models/Category';
 import { quickSort } from '@/util/Quicksort';
 
 const Home = () => {
-  const featuresData = quickSort(data.data.features);
   const categoryData = data.data.featureCategories;
+  const featuresData = quickSort(data.data.features);
   const [allFeatures, setAllFeatures] = useState<Feature[]>([]);
   const [featureCount, setFeatureCount] = useState<number>(0);
   const [filteredFeatures, setFilteredFeatures] = useState<Feature[]>([]);
@@ -26,17 +26,14 @@ const Home = () => {
   const perPage = 20;
 
   useEffect(() => {
-    setLastPage(Math.floor(featuresData.length / perPage));
+    setLastPage(Math.floor(featuresData / perPage));
     setAllFeatures(featuresData);
+    setFilteredFeatures(featuresData.slice(0, 20));
     setCategories(categoryData);
     categoryData.map((category) =>
       setCategoryMap((map) => new Map(map.set(category.sid.id, category.name)))
     );
   }, []);
-
-  useEffect(() => {
-    if (!!allFeatures) setFilteredFeatures(allFeatures.slice(0, 20));
-  }, [allFeatures]);
 
   useEffect(() => {
     let features = allFeatures;
