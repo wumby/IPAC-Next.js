@@ -53,9 +53,7 @@ const FeaturesDisplay = (props: {
 
   return (
     <>
-    <Show when={!props.features.length}>
-      <LoadingOverlay visible={true} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
-    </Show>
+    
       <Flex justify={'space-evenly'} align={'center'} style={{ width: '100%' }}>
         <Select
           label={'Category'}

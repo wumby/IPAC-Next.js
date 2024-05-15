@@ -6,6 +6,8 @@ import FeaturesDisplay from './FeaturesDisplay';
 import { Filters } from '../models/Filters';
 import { Category } from '../models/Category';
 import { quickSort } from '@/util/Quicksort';
+import Show from './Show/Show';
+import { LoadingOverlay } from '@mantine/core';
 
 const Home = () => {
   const categoryData = data.data.featureCategories;
@@ -70,7 +72,9 @@ const Home = () => {
 
   return (
     <>
-    
+    <Show when={!allFeatures.length}>
+      <LoadingOverlay visible={true} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
+    </Show>
     <FeaturesDisplay
       features={filteredFeatures}
       filters={filters}
