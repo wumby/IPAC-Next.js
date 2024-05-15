@@ -1,4 +1,6 @@
-export const quickSort : any = (arr: string | any[]) => {
+import { Feature } from "@/models/Features";
+
+export const quickSort : any = (arr: Feature[]) => {
   if (arr.length <= 1) {
     return arr;
   }
