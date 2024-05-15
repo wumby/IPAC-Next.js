@@ -70,9 +70,7 @@ const FeaturesDisplay = (props: {
           lastPage={props.lastPage}
           setFilters={props.setFilters}
         ></Pagination>
-      </Show>
       <FeaturesCards features={props.features} categoryMap={props.categoryMap} />
-      <Show when={props.features.length !== 0}>
         <Pagination
           filters={props.filters}
           featureCount={props.featureCount}
