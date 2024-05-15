@@ -7,7 +7,13 @@ const FeaturesCards = (props: { features: Feature[]; categoryMap: Map<number, st
     <Flex justify={'center'} align={'center'} style={{ width: '100%' }} wrap={'wrap'}>
       {props.features.map((Features) => {
         return (
-          <Flex style={{ minWidth: '50%' }} justify={'center'} align={'center'} m={'sm'} key={Features.sid.id}>
+          <Flex
+            style={{ minWidth: '50%' }}
+            justify={'center'}
+            align={'center'}
+            m={'sm'}
+            key={Features.sid.id}
+          >
             <Paper withBorder p={'xs'} style={{ width: '100%' }}>
               <Flex justify={'center'} wrap={'wrap'}>
                 <strong>{Features.displayName}</strong>
@@ -18,7 +24,7 @@ const FeaturesCards = (props: { features: Feature[]; categoryMap: Map<number, st
               </Flex>
               <Show when={!!Features.epKeywords.length}>
                 <Flex justify={'center'} wrap={'wrap'}>
-                  <span>Keywords: {Features.epKeywords.join(", ")}</span>
+                  <span>Keywords: {Features.epKeywords.join(', ')}</span>
                 </Flex>
               </Show>
             </Paper>

@@ -8,36 +8,36 @@ const Pagination = (props: {
   setFilters: (filters: Filters) => void;
   featureCount: number;
 }) => {
-    const next = () => {
-        props.setFilters({
-          ...props.filters,
-          page: props.filters.page + 1,
-          count: props.filters.count + 20,
-        });
-      };
-    
-      const prev = () => {
-        props.setFilters({
-          ...props.filters,
-          page: props.filters.page - 1,
-          count: props.filters.count - 20,
-        });
-      };
-      const first = () => {
-        props.setFilters({
-          ...props.filters,
-          page: 1,
-          count: 0,
-        });
-      };
-    
-      const last = () => {
-        props.setFilters({
-          ...props.filters,
-          page: props.lastPage,
-          count: props.featureCount - (props.featureCount % 20 === 0 ? 20 : props.featureCount % 20),
-        });
-      };
+  const next = () => {
+    props.setFilters({
+      ...props.filters,
+      page: props.filters.page + 1,
+      count: props.filters.count + 20,
+    });
+  };
+
+  const prev = () => {
+    props.setFilters({
+      ...props.filters,
+      page: props.filters.page - 1,
+      count: props.filters.count - 20,
+    });
+  };
+  const first = () => {
+    props.setFilters({
+      ...props.filters,
+      page: 1,
+      count: 0,
+    });
+  };
+
+  const last = () => {
+    props.setFilters({
+      ...props.filters,
+      page: props.lastPage,
+      count: props.featureCount - (props.featureCount % 20 === 0 ? 20 : props.featureCount % 20),
+    });
+  };
   return (
     <Flex justify={'center'} align={'center'} style={{ width: '100%' }} m={'sm'}>
       <Button disabled={props.filters.page <= 1} onClick={first} mr={'lg'}>
