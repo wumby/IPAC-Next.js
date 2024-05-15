@@ -50,7 +50,7 @@ const Home = () => {
         setMap((map) => new Map(map.set(filters.category + filters.s, features)));
       }
     }
-    if (filters.s !== '') {
+    if (!!filters.s.length) {
       features = features.filter(
         (f) =>
           f.displayName.toLowerCase().indexOf(filters.s.toLowerCase()) >= 0 ||
