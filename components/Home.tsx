@@ -37,9 +37,9 @@ const Home = () => {
     );
   }, []);
 
-  const getLastPage= (features: Feature[]) => {
+  const getLastPage = (features: Feature[]) => {
     return Math.ceil(features.length / perPage);
-  }
+  };
 
   const filterFeatures = (features: Feature[]) => {
     if (filters.category !== '0' && filters.category !== null) {
@@ -60,13 +60,11 @@ const Home = () => {
       );
     }
     return features;
-  }
-
-  
+  };
 
   useEffect(() => {
-    if(!!allFeatures){
-      const features = filterFeatures(allFeatures)
+    if (!!allFeatures) {
+      const features = filterFeatures(allFeatures);
       setFilteredFeatures(features.slice(filters.count, filters.page * perPage));
       if (filterFeatures.length === 0) setLastPage(1);
       else setLastPage(getLastPage(features));
@@ -76,20 +74,19 @@ const Home = () => {
 
   return (
     <>
-    <Show when={!allFeatures.length}>
-      <LoadingOverlay visible={true} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
-    </Show>
-    <FeaturesDisplay
-      features={filteredFeatures}
-      filters={filters}
-      featureCount={featureCount}
-      setFilters={setFilters}
-      lastPage={lastPage}
-      categories={categories}
-      categoryMap={categoryMap}
-    />
+      <Show when={!allFeatures.length}>
+        <LoadingOverlay visible={true} zIndex={1000} overlayProps={{ radius: 'sm', blur: 2 }} />
+      </Show>
+      <FeaturesDisplay
+        features={filteredFeatures}
+        filters={filters}
+        featureCount={featureCount}
+        setFilters={setFilters}
+        lastPage={lastPage}
+        categories={categories}
+        categoryMap={categoryMap}
+      />
     </>
-    
   );
 };
 

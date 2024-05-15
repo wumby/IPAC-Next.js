@@ -1,11 +1,15 @@
-import {render, screen} from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Nav from '@/components/Nav/Nav';
-import { MantineProvider} from '@mantine/core'
+import { MantineProvider } from '@mantine/core';
 
 test('it renders the nav bar heading', () => {
-    render(<MantineProvider><Nav/></MantineProvider>)
+  render(
+    <MantineProvider>
+      <Nav />
+    </MantineProvider>
+  );
 
-    const heading = screen.getByText("Biological Features");
-    
-    expect(heading).toBeInTheDocument();
-})
+  const heading = screen.getByText('Biological Features');
+
+  expect(heading).toBeInTheDocument();
+});
