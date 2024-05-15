@@ -6,8 +6,6 @@ import FeaturesDisplay from './FeaturesDisplay';
 import { Filters } from '../models/Filters';
 import { Category } from '../models/Category';
 import { quickSort } from '@/util/Quicksort';
-import Show from './Show/Show';
-import { Box, LoadingOverlay } from '@mantine/core';
 
 const Home = () => {
   const categoryData = data.data.featureCategories;
@@ -30,7 +28,7 @@ const Home = () => {
   useEffect(() => {
     setLastPage(Math.floor(featuresData / perPage));
     setAllFeatures(featuresData);
-    setFilteredFeatures(featuresData.slice(0, 20));
+    setFilteredFeatures(featuresData.slice(0, perPage));
     setCategories(categoryData);
     categoryData.map((category) =>
       setCategoryMap((map) => new Map(map.set(category.sid.id, category.name)))
