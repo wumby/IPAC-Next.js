@@ -37,6 +37,10 @@ const Home = () => {
     );
   }, []);
 
+  const getLastPage= (features: Feature[]) => {
+    return Math.ceil(features.length / perPage);
+  }
+
   const filterFeatures = (features: Feature[]) => {
     if (filters.category !== '0' && filters.category !== null) {
       if (map.has(filters.category + filters.s)) {
@@ -55,19 +59,19 @@ const Home = () => {
           )
       );
     }
-    setLastPage(Math.ceil(features.length / perPage));
-    if (features.length === 0) {
-      setLastPage(1);
-    }
-    setFeatureCount(features.length);
-    return features.slice(filters.count, filters.page * perPage);
+    return features;
   }
 
   
 
   useEffect(() => {
-    if(!!allFeatures)
-    setFilteredFeatures(filterFeatures(allFeatures));
+    if(!!allFeatures){
+      const features = filterFeatures(allFeatures)
+      setFilteredFeatures(features.slice(filters.count, filters.page * perPage));
+      if (filterFeatures.length === 0) setLastPage(1);
+      else setLastPage(getLastPage(features));
+      setFeatureCount(features.length);
+    }
   }, [filters, allFeatures]);
 
   return (

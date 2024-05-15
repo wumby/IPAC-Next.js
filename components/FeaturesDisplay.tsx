@@ -53,7 +53,6 @@ const FeaturesDisplay = (props: {
 
   return (
     <>
-    
       <Flex justify={'space-evenly'} align={'center'} style={{ width: '100%' }}>
         <Select
           label={'Category'}
