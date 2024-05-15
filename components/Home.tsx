@@ -6,6 +6,8 @@ import FeaturesDisplay from './FeaturesDisplay';
 import { Filters } from '../models/Filters';
 import { Category } from '../models/Category';
 import { quickSort } from '@/util/Quicksort';
+import Show from './Show/Show';
+import { Box, LoadingOverlay } from '@mantine/core';
 
 const Home = () => {
   const categoryData = data.data.featureCategories;
@@ -35,8 +37,7 @@ const Home = () => {
     );
   }, []);
 
-  useEffect(() => {
-    let features = allFeatures;
+  const filterFeatures = (features: Feature[]) => {
     if (filters.category !== '0' && filters.category !== null) {
       if (map.has(filters.category + filters.s)) {
         features = map.get(filters.category + filters.s)!;
@@ -59,10 +60,19 @@ const Home = () => {
       setLastPage(1);
     }
     setFeatureCount(features.length);
-    setFilteredFeatures(features.slice(filters.count, filters.page * perPage));
+    return features.slice(filters.count, filters.page * perPage);
+  }
+
+  
+
+  useEffect(() => {
+    if(!!allFeatures)
+    setFilteredFeatures(filterFeatures(allFeatures));
   }, [filters, allFeatures]);
 
   return (
+    <>
+    
     <FeaturesDisplay
       features={filteredFeatures}
       filters={filters}
@@ -72,6 +82,8 @@ const Home = () => {
       categories={categories}
       categoryMap={categoryMap}
     />
+    </>
+    
   );
 };
 

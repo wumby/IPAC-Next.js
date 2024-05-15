@@ -1,6 +1,6 @@
 import { Feature } from '@/models/Features';
 import { Flex, Paper } from '@mantine/core';
-import Show from './Show';
+import Show from './Show/Show';
 
 const FeaturesCards = (props: { features: Feature[]; categoryMap: Map<number, string> }) => {
   return (

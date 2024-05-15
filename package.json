@@ -11,7 +11,7 @@
     "lint": "next lint && npm run lint:stylelint",
     "lint:stylelint": "stylelint '**/*.css' --cache",
     "jest": "jest",
-    "jest:watch": "jest --watch",
+    "jest:watch": "jest --watchAll",
     "prettier:check": "prettier --check \"**/*.{ts,tsx}\"",
     "prettier:write": "prettier --write \"**/*.{ts,tsx}\"",
     "test": "npm run prettier:check && npm run lint && npm run typecheck && npm run jest"

@@ -1,18 +1,23 @@
-export const quickSort = (arr: string | any[]) => {
+export const quickSort : any = (arr: string | any[]) => {
   if (arr.length <= 1) {
     return arr;
   }
-  let pivot = arr[0];
-  let leftArr = [];
-  let rightArr = [];
+  const pivot = arr[arr.length-1];
+  const leftArr = [];
+  const rightArr = [];
 
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i].displayName.toLowerCase() < pivot.displayName.toLowerCase()) {
-      leftArr.push(arr[i]);
-    } else {
-      rightArr.push(arr[i]);
+  for (const val of arr.slice(0,arr.length-1)) {
+    val.displayName.toLowerCase() < pivot.displayName.toLowerCase() ? leftArr.push(val) : rightArr.push(val);
     }
+  
+
+  if(leftArr.length>0 && rightArr.length >0){
+    return [...quickSort(leftArr), pivot, ...quickSort(rightArr)]
   }
-  const array: any = [...quickSort(leftArr), pivot, ...quickSort(rightArr)];
-  return array;
+  else if(leftArr.length>0){
+    return [...quickSort(leftArr), pivot]
+  }
+  else{
+    return [pivot, ...quickSort(rightArr)]
+  }
 };

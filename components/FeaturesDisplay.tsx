@@ -3,8 +3,8 @@ import { Feature } from '../models/Features';
 import { Filters } from '../models/Filters';
 import debounce from 'lodash.debounce';
 import { Category } from '../models/Category';
-import { Flex, Select, TextInput } from '@mantine/core';
-import Show from './Show';
+import { Box, Flex, LoadingOverlay, Select, TextInput } from '@mantine/core';
+import Show from './Show/Show';
 import Pagination from './Pagination';
 import FeaturesCards from './FeaturesCards';
 
@@ -53,6 +53,9 @@ const FeaturesDisplay = (props: {
 
   return (
     <>
+    <Show when={!props.features.length}>
+      <LoadingOverlay visible={true} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
+    </Show>
       <Flex justify={'space-evenly'} align={'center'} style={{ width: '100%' }}>
         <Select
           label={'Category'}
