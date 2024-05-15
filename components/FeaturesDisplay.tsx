@@ -1,4 +1,3 @@
-'use client';
 import { useEffect, useMemo, useState } from 'react';
 import { Feature } from '../models/Features';
 import { Filters } from '../models/Filters';
