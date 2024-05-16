@@ -8,7 +8,6 @@ const Pagination = (props: {
   setFilters: (filters: Filters) => void;
   featureCount: number;
 }) => {
-
   const next = (filters: Filters) => {
     return {
       ...filters,
@@ -26,15 +25,15 @@ const Pagination = (props: {
   };
 
   const first = (filters: Filters) => {
-    return{
+    return {
       ...filters,
       page: 1,
       count: 0,
     };
   };
 
-  const last = (filters: Filters,lastPage: number, featureCount:number) => {
-    return{
+  const last = (filters: Filters, lastPage: number, featureCount: number) => {
+    return {
       ...filters,
       page: lastPage,
       count: featureCount - (featureCount % 20 === 0 ? 20 : featureCount % 20),
@@ -43,17 +42,33 @@ const Pagination = (props: {
 
   return (
     <Flex justify={'center'} align={'center'} style={{ width: '100%' }} m={'sm'}>
-      <Button disabled={props.filters.page <= 1} onClick={() => props.setFilters(first(props.filters))} mr={'lg'}>
+      <Button
+        disabled={props.filters.page <= 1}
+        onClick={() => props.setFilters(first(props.filters))}
+        mr={'lg'}
+      >
         <FastArrowLeft></FastArrowLeft>
       </Button>
-      <Button disabled={props.filters.page <= 1} onClick={() => props.setFilters(prev(props.filters))} mr={'lg'}>
+      <Button
+        disabled={props.filters.page <= 1}
+        onClick={() => props.setFilters(prev(props.filters))}
+        mr={'lg'}
+      >
         <NavArrowLeft></NavArrowLeft>
       </Button>
       <h3>{props.filters.page}</h3>
-      <Button disabled={props.filters.page >= props.lastPage} onClick={() => props.setFilters(next(props.filters))} ml={'lg'}>
+      <Button
+        disabled={props.filters.page >= props.lastPage}
+        onClick={() => props.setFilters(next(props.filters))}
+        ml={'lg'}
+      >
         <NavArrowRight></NavArrowRight>
       </Button>
-      <Button disabled={props.filters.page >= props.lastPage} onClick={() => props.setFilters(last(props.filters,props.lastPage, props.featureCount))} ml={'lg'}>
+      <Button
+        disabled={props.filters.page >= props.lastPage}
+        onClick={() => props.setFilters(last(props.filters, props.lastPage, props.featureCount))}
+        ml={'lg'}
+      >
         <FastArrowRight></FastArrowRight>
       </Button>
     </Flex>

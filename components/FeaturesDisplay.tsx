@@ -25,7 +25,7 @@ const FeaturesDisplay = (props: {
   }));
 
   const handleSearch = useDebouncedCallback(async (query: string) => {
-    if(!!query){
+    if (!!query) {
       props.setFilters({
         ...props.filters,
         s: query,
@@ -53,7 +53,11 @@ const FeaturesDisplay = (props: {
           onChange={(value) => filterCategory(value!)}
           placeholder="Select Category"
         />
-        <TextInput label={'Search'} onChange={(e) => handleSearch(e.target.value)} placeholder="Search" />
+        <TextInput
+          label={'Search'}
+          onChange={(e) => handleSearch(e.target.value)}
+          placeholder="Search"
+        />
       </Flex>
       <Show when={props.features.length !== 0}>
         <Pagination

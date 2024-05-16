@@ -28,7 +28,6 @@ const Home = () => {
   const perPage = 20;
 
   useEffect(() => {
-
     setLastPage(Math.floor(featuresData / perPage));
     setAllFeatures(featuresData);
     setFilteredFeatures(featuresData.slice(0, perPage));
@@ -65,7 +64,6 @@ const Home = () => {
 
   useEffect(() => {
     if (!!allFeatures) {
-      console.log(allFeatures)
       const features = filterFeatures(allFeatures);
       setFilteredFeatures(features.slice(filters.count, filters.page * perPage));
       if (filterFeatures.length === 0) setLastPage(1);
