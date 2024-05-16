@@ -7,6 +7,7 @@ import { Box, Flex, LoadingOverlay, Select, TextInput } from '@mantine/core';
 import Show from './Show/Show';
 import Pagination from './Pagination';
 import FeaturesCards from './FeaturesCards';
+import { useDebouncedCallback, useDebouncedState } from '@mantine/hooks';
 
 const FeaturesDisplay = (props: {
   features: Feature[];
@@ -22,25 +23,17 @@ const FeaturesDisplay = (props: {
     value: item.sid.id.toString(),
     label: item.name,
   }));
-  const [searchParam, setSearchParam] = useState<string | null>(null);
 
-  const search = useMemo(
-    () =>
-      debounce((s: string) => {
-        setSearchParam(s);
-      }, DEBOUNCE_TIME_MS),
-    [props.filters.s]
-  );
-
-  useEffect(() => {
-    if (searchParam !== null)
+  const handleSearch = useDebouncedCallback(async (query: string) => {
+    if(!!query){
       props.setFilters({
         ...props.filters,
-        s: searchParam,
+        s: query,
         page: 1,
         count: 0,
       });
-  }, [searchParam]);
+    }
+  }, 500);
 
   const filterCategory = (category: string) => {
     props.setFilters({
@@ -60,7 +53,7 @@ const FeaturesDisplay = (props: {
           onChange={(value) => filterCategory(value!)}
           placeholder="Select Category"
         />
-        <TextInput label={'Search'} onChange={(e) => search(e.target.value)} placeholder="Search" />
+        <TextInput label={'Search'} onChange={(e) => handleSearch(e.target.value)} placeholder="Search" />
       </Flex>
       <Show when={props.features.length !== 0}>
         <Pagination

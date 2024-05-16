@@ -1,12 +1,12 @@
 'use client';
 import { useEffect, useState } from 'react';
-import data from '../FeaturesEndpointResponse.json';
-import { Feature } from '../models/Features';
-import FeaturesDisplay from './FeaturesDisplay';
-import { Filters } from '../models/Filters';
-import { Category } from '../models/Category';
+import data from '../../FeaturesEndpointResponse.json';
+import { Feature } from '../../models/Features';
+import FeaturesDisplay from '../FeaturesDisplay';
+import { Filters } from '../../models/Filters';
+import { Category } from '../../models/Category';
 import { quickSort } from '@/util/Quicksort';
-import Show from './Show/Show';
+import Show from '../Show/Show';
 import { LoadingOverlay } from '@mantine/core';
 
 const Home = () => {
@@ -28,6 +28,7 @@ const Home = () => {
   const perPage = 20;
 
   useEffect(() => {
+
     setLastPage(Math.floor(featuresData / perPage));
     setAllFeatures(featuresData);
     setFilteredFeatures(featuresData.slice(0, perPage));
@@ -64,6 +65,7 @@ const Home = () => {
 
   useEffect(() => {
     if (!!allFeatures) {
+      console.log(allFeatures)
       const features = filterFeatures(allFeatures);
       setFilteredFeatures(features.slice(filters.count, filters.page * perPage));
       if (filterFeatures.length === 0) setLastPage(1);
