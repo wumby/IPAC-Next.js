@@ -23,24 +23,29 @@ const FeaturesDisplay = (props: {
     value: item.sid.id.toString(),
     label: item.name,
   }));
+  const [value, setValue] = useDebouncedState<string>('', DEBOUNCE_TIME_MS);
 
-  const handleSearch = useDebouncedCallback(async (query: string) => {
-      props.setFilters({
-        ...props.filters,
+  const filterSearch =(filters: Filters, query: string) => {
+      return{
+        ...filters,
         s: query,
         page: 1,
         count: 0,
-      });
-  }, DEBOUNCE_TIME_MS);
+      };
+  };
 
-  const filterCategory = (category: string) => {
-    props.setFilters({
-      ...props.filters,
+  const filterCategory = (filters: Filters, category: string) => {
+    return{
+      ...filters,
       category: category,
       page: 1,
       count: 0,
-    });
+    };
   };
+
+  useEffect(() =>{
+    props.setFilters(filterSearch(props.filters,value))
+  },[value])
 
   return (
     <>
@@ -48,12 +53,12 @@ const FeaturesDisplay = (props: {
         <Select
           label={'Category'}
           data={categoryData}
-          onChange={(value) => filterCategory(value!)}
+          onChange={(value) => props.setFilters(filterCategory(props.filters, value!))}
           placeholder="Select Category"
         />
         <TextInput
           label={'Search'}
-          onChange={(e) => handleSearch(e.target.value)}
+          onChange={(e) => setValue(e.target.value)}
           placeholder="Search"
         />
       </Flex>

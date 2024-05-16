@@ -16,7 +16,7 @@ const Home = () => {
   const [featureCount, setFeatureCount] = useState<number>(0);
   const [filteredFeatures, setFilteredFeatures] = useState<Feature[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
-  const [map, setMap] = useState<Map<string, Feature[]>>(new Map());
+  const [featureMap, setFeatureMap] = useState<Map<string, Feature[]>>(new Map());
   const [categoryMap, setCategoryMap] = useState<Map<number, string>>(new Map());
   const [filters, setFilters] = useState<Filters>({
     s: '',
@@ -43,14 +43,13 @@ const Home = () => {
 
   const filterFeatures = (features: Feature[]) => {
     if (filters.category !== '0' && filters.category !== null) {
-      if (map.has(filters.category )) {
-        features = map.get(filters.category )!;
+      if (featureMap.has(filters.category + filters.s)) {
+        features = featureMap.get(filters.category +filters.s)!;
       } else {
         features = features.filter((f) => f.categorySid.id === parseInt(filters.category));
-        setMap((map) => new Map(map.set(filters.category, features)));
+        setFeatureMap((map) => new Map(map.set(filters.category +filters.s, features)));
       }
     }
-    console.log(features)
     if (!!filters.s.length) {
       features = features.filter(
         (f) =>
