@@ -25,15 +25,13 @@ const FeaturesDisplay = (props: {
   }));
 
   const handleSearch = useDebouncedCallback(async (query: string) => {
-    if (!!query) {
       props.setFilters({
         ...props.filters,
         s: query,
         page: 1,
         count: 0,
       });
-    }
-  }, 500);
+  }, DEBOUNCE_TIME_MS);
 
   const filterCategory = (category: string) => {
     props.setFilters({

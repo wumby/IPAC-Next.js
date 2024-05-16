@@ -43,13 +43,14 @@ const Home = () => {
 
   const filterFeatures = (features: Feature[]) => {
     if (filters.category !== '0' && filters.category !== null) {
-      if (map.has(filters.category + filters.s)) {
-        features = map.get(filters.category + filters.s)!;
+      if (map.has(filters.category )) {
+        features = map.get(filters.category )!;
       } else {
         features = features.filter((f) => f.categorySid.id === parseInt(filters.category));
-        setMap((map) => new Map(map.set(filters.category + filters.s, features)));
+        setMap((map) => new Map(map.set(filters.category, features)));
       }
     }
+    console.log(features)
     if (!!filters.s.length) {
       features = features.filter(
         (f) =>
