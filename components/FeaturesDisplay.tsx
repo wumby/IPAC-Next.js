@@ -5,8 +5,8 @@ import debounce from 'lodash.debounce';
 import { Category } from '../models/Category';
 import { Box, Flex, LoadingOverlay, Select, TextInput } from '@mantine/core';
 import Show from './Show/Show';
-import Pagination from './Pagination';
-import FeaturesCards from './FeaturesCards';
+import Pagination from './Pagination/Pagination';
+import FeaturesCards from './FeaturesCards/FeaturesCards';
 import { useDebouncedCallback, useDebouncedState } from '@mantine/hooks';
 
 const FeaturesDisplay = (props: {
@@ -23,29 +23,24 @@ const FeaturesDisplay = (props: {
     value: item.sid.id.toString(),
     label: item.name,
   }));
-  const [value, setValue] = useDebouncedState<string>('', DEBOUNCE_TIME_MS);
 
-  const filterSearch =(filters: Filters, query: string) => {
-      return{
-        ...filters,
-        s: query,
-        page: 1,
-        count: 0,
-      };
-  };
+  const handleSearch = useDebouncedCallback(async (query: string) => {
+    props.setFilters({
+      ...props.filters,
+      s: query,
+      page: 1,
+      count: 0,
+    });
+  }, DEBOUNCE_TIME_MS);
 
-  const filterCategory = (filters: Filters, category: string) => {
-    return{
-      ...filters,
+  const filterCategory = (category: string) => {
+    props.setFilters({
+      ...props.filters,
       category: category,
       page: 1,
       count: 0,
-    };
+    });
   };
-
-  useEffect(() =>{
-    props.setFilters(filterSearch(props.filters,value))
-  },[value])
 
   return (
     <>
@@ -53,12 +48,12 @@ const FeaturesDisplay = (props: {
         <Select
           label={'Category'}
           data={categoryData}
-          onChange={(value) => props.setFilters(filterCategory(props.filters, value!))}
+          onChange={(value) => filterCategory(value!)}
           placeholder="Select Category"
         />
         <TextInput
           label={'Search'}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => handleSearch(e.target.value)}
           placeholder="Search"
         />
       </Flex>

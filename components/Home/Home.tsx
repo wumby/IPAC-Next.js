@@ -53,9 +53,9 @@ const Home = () => {
     if (!!filters.s.length) {
       features = features.filter(
         (f) =>
-          f.displayName.toLowerCase().indexOf(filters.s.toLowerCase()) >= 0 ||
+          f.displayName.toLowerCase().includes(filters.s.toLowerCase()) ||
           f.epKeywords.find(
-            (keyword) => keyword.toLowerCase().indexOf(filters.s.toLowerCase()) >= 0
+            (keyword) => keyword.toLowerCase().includes(filters.s.toLowerCase())
           )
       );
     }
@@ -77,6 +77,7 @@ const Home = () => {
       <Show when={!allFeatures.length}>
         <LoadingOverlay visible={true} zIndex={1000} overlayProps={{ radius: 'sm', blur: 2 }} />
       </Show>
+      <Show when={!!allFeatures.length}>
       <FeaturesDisplay
         features={filteredFeatures}
         filters={filters}
@@ -86,6 +87,7 @@ const Home = () => {
         categories={categories}
         categoryMap={categoryMap}
       />
+      </Show>
     </>
   );
 };

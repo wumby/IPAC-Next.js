@@ -8,65 +8,68 @@ const Pagination = (props: {
   setFilters: (filters: Filters) => void;
   featureCount: number;
 }) => {
-  const next = (filters: Filters) => {
-    return {
-      ...filters,
-      page: filters.page + 1,
-      count: filters.count + 20,
-    };
+  const next = () => {
+    props.setFilters({
+      ...props.filters,
+      page: props.filters.page + 1,
+      count: props.filters.count + 20,
+    });
   };
 
-  const prev = (filters: Filters) => {
-    return {
-      ...filters,
-      page: filters.page - 1,
-      count: filters.count - 20,
-    };
+  const prev = () => {
+    props.setFilters({
+      ...props.filters,
+      page: props.filters.page - 1,
+      count: props.filters.count - 20,
+    });
   };
-
-  const first = (filters: Filters) => {
-    return {
-      ...filters,
+  const first = () => {
+    props.setFilters({
+      ...props.filters,
       page: 1,
       count: 0,
-    };
+    });
   };
 
-  const last = (filters: Filters, lastPage: number, featureCount: number) => {
-    return {
-      ...filters,
-      page: lastPage,
-      count: featureCount - (featureCount % 20 === 0 ? 20 : featureCount % 20),
-    };
+  const last = () => {
+    props.setFilters({
+      ...props.filters,
+      page: props.lastPage,
+      count: props.featureCount - (props.featureCount % 20 === 0 ? 20 : props.featureCount % 20),
+    });
   };
 
   return (
     <Flex justify={'center'} align={'center'} style={{ width: '100%' }} m={'sm'}>
       <Button
+      aria-label='first page'
         disabled={props.filters.page <= 1}
-        onClick={() => props.setFilters(first(props.filters))}
+        onClick={first}
         mr={'lg'}
       >
         <FastArrowLeft></FastArrowLeft>
       </Button>
       <Button
+      aria-label='previous page'
         disabled={props.filters.page <= 1}
-        onClick={() => props.setFilters(prev(props.filters))}
+        onClick={prev}
         mr={'lg'}
       >
         <NavArrowLeft></NavArrowLeft>
       </Button>
       <h3>{props.filters.page}</h3>
       <Button
+      aria-label='next page'
         disabled={props.filters.page >= props.lastPage}
-        onClick={() => props.setFilters(next(props.filters))}
+        onClick={next}
         ml={'lg'}
       >
         <NavArrowRight></NavArrowRight>
       </Button>
       <Button
+      aria-label='last page'
         disabled={props.filters.page >= props.lastPage}
-        onClick={() => props.setFilters(last(props.filters, props.lastPage, props.featureCount))}
+        onClick={last}
         ml={'lg'}
       >
         <FastArrowRight></FastArrowRight>

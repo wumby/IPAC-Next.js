@@ -1,6 +1,6 @@
 import { Feature } from '@/models/Features';
 import { Flex, Paper } from '@mantine/core';
-import Show from './Show/Show';
+import Show from '../Show/Show';
 
 const FeaturesCards = (props: { features: Feature[]; categoryMap: Map<number, string> }) => {
   return (
@@ -24,7 +24,8 @@ const FeaturesCards = (props: { features: Feature[]; categoryMap: Map<number, st
               </Flex>
               <Show when={!!Features.epKeywords.length}>
                 <Flex justify={'center'} wrap={'wrap'}>
-                  <span>Keywords: {Features.epKeywords.join(', ')}</span>
+                  <span>Keywords: &nbsp;</span>
+                  <span>{Features.epKeywords.join(', ')}</span>
                 </Flex>
               </Show>
             </Paper>
