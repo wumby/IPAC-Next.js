@@ -11,9 +11,7 @@ test('it renders its children when props are true', () => {
     </MantineProvider>
   );
 
-  const heading = screen.getByText('Show');
-
-  expect(heading).toBeInTheDocument();
+  expect( screen.getByText('Show')).toBeInTheDocument();
 });
 
 test('it doesnt render its children when props are false', () => {
@@ -25,7 +23,5 @@ test('it doesnt render its children when props are false', () => {
     </MantineProvider>
   );
 
-  const heading = screen.queryByText('Show');
-
-  expect(heading).toBeNull();
+  expect(screen.queryByText('Show')).toBeNull();
 });

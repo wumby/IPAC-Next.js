@@ -17,9 +17,7 @@ describe('Features Cards Component', () => {
             </MantineProvider>
         );
       
-        const displayName = screen.getByText('test display name');
-      
-        expect(displayName).toBeInTheDocument();
+        expect(screen.getByText('test display name')).toBeInTheDocument();
       });
 
       test('it renders the category', () => {
@@ -29,9 +27,7 @@ describe('Features Cards Component', () => {
             </MantineProvider>
         );
       
-        const category = screen.getByText('test category');
-      
-        expect(category).toBeInTheDocument();
+        expect(screen.getByText('test category')).toBeInTheDocument();
       });
 
       test('it renders keywords when we have keywords', () => {
@@ -52,10 +48,8 @@ describe('Features Cards Component', () => {
                 <FeaturesCards features={featuresNoKeywords} categoryMap={categoryMap}></FeaturesCards>
             </MantineProvider>
         );
-      
-        const noKeywords = screen.queryByText('Keywords:');
 
-        expect(noKeywords).toBeNull();
+        expect(screen.queryByText('Keywords:')).toBeNull();
       });
 
 

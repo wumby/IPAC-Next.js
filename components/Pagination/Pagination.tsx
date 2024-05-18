@@ -8,6 +8,7 @@ const Pagination = (props: {
   setFilters: (filters: Filters) => void;
   featureCount: number;
 }) => {
+  
   const next = () => {
     props.setFilters({
       ...props.filters,

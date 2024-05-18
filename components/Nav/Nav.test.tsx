@@ -9,7 +9,5 @@ test('it renders the nav bar heading', () => {
     </MantineProvider>
   );
 
-  const heading = screen.getByText('Biological Features');
-
-  expect(heading).toBeInTheDocument();
+  expect(screen.getByText('Biological Features')).toBeInTheDocument();
 });

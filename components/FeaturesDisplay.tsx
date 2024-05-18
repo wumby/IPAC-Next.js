@@ -1,13 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
 import { Feature } from '../models/Features';
 import { Filters } from '../models/Filters';
-import debounce from 'lodash.debounce';
 import { Category } from '../models/Category';
-import { Box, Flex, LoadingOverlay, Select, TextInput } from '@mantine/core';
+import { Flex, Select, TextInput } from '@mantine/core';
 import Show from './Show/Show';
 import Pagination from './Pagination/Pagination';
 import FeaturesCards from './FeaturesCards/FeaturesCards';
-import { useDebouncedCallback, useDebouncedState } from '@mantine/hooks';
+import { useDebouncedCallback } from '@mantine/hooks';
 
 const FeaturesDisplay = (props: {
   features: Feature[];

@@ -8,6 +8,7 @@ import { Category } from '../../models/Category';
 import { quickSort } from '@/util/Quicksort';
 import Show from '../Show/Show';
 import { LoadingOverlay } from '@mantine/core';
+import { useWindowScroll } from '@mantine/hooks';
 
 const Home = () => {
   const categoryData = data.data.featureCategories;
@@ -26,6 +27,7 @@ const Home = () => {
   });
   const [lastPage, setLastPage] = useState(0);
   const perPage = 20;
+  const [, scrollTo] = useWindowScroll();
 
   useEffect(() => {
     setLastPage(Math.floor(featuresData / perPage));
@@ -69,6 +71,7 @@ const Home = () => {
       if (filterFeatures.length === 0) setLastPage(1);
       else setLastPage(getLastPage(features));
       setFeatureCount(features.length);
+      scrollTo({y:0});
     }
   }, [filters, allFeatures]);
 
