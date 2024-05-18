@@ -1,10 +1,10 @@
-import { Feature } from '../models/Features';
-import { Filters } from '../models/Filters';
-import { Category } from '../models/Category';
+import { Feature } from '../../models/Features';
+import { Filters } from '../../models/Filters';
+import { Category } from '../../models/Category';
 import { Flex, Select, TextInput } from '@mantine/core';
-import Show from './Show/Show';
-import Pagination from './Pagination/Pagination';
-import FeaturesCards from './FeaturesCards/FeaturesCards';
+import Show from '../Show/Show';
+import Pagination from '../Pagination/Pagination';
+import FeaturesCards from '../FeaturesCards/FeaturesCards';
 import { useDebouncedCallback } from '@mantine/hooks';
 
 const FeaturesDisplay = (props: {

@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import data from '../../FeaturesEndpointResponse.json';
 import { Feature } from '../../models/Features';
-import FeaturesDisplay from '../FeaturesDisplay';
+import FeaturesDisplay from '../FeaturesDisplay/FeaturesDisplay';
 import { Filters } from '../../models/Filters';
 import { Category } from '../../models/Category';
 import { quickSort } from '@/util/Quicksort';
