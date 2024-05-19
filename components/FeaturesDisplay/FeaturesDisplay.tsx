@@ -1,18 +1,19 @@
+'use client';
 import { Feature } from '../../models/Features';
 import { Filters } from '../../models/Filters';
 import { Category } from '../../models/Category';
-import { Flex, Select, TextInput } from '@mantine/core';
+import { Flex, LoadingOverlay, Select, TextInput } from '@mantine/core';
 import Show from '../Show/Show';
 import Pagination from '../Pagination/Pagination';
 import FeaturesCards from '../FeaturesCards/FeaturesCards';
 import { useDebouncedCallback, useWindowScroll } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
+import { features } from 'process';
 
 const FeaturesDisplay = (props: {
-  allFeatures: Feature[];
+  features: Feature[];
   categories: Category[];
   categoryMap: Map<number, string>;
-  perPage: number;
 }) => {
   const DEBOUNCE_TIME_MS = 500;
   const [, scrollTo] = useWindowScroll();
@@ -25,11 +26,12 @@ const FeaturesDisplay = (props: {
   });
   const [featureMap, setFeatureMap] = useState<Map<string, Feature[]>>(new Map());
   const [featureCount, setFeatureCount] = useState<number>(0);
-  const [filteredFeatures, setFilteredFeatures] = useState<Feature[]>([]);
+  const [filteredFeatures, setFilteredFeatures] = useState<Feature[]>(props.features);
   const categoryData = props.categories.map((item) => ({
     value: item.sid.id.toString(),
     label: item.name,
   }));
+  const perPage=20;
 
   const handleSearch = useDebouncedCallback(async (query: string) => {
     setFilters({
@@ -50,7 +52,7 @@ const FeaturesDisplay = (props: {
   };
 
   const getLastPage = (features: Feature[]) => {
-    return Math.ceil(features.length / props.perPage);
+    return Math.ceil(features.length / perPage);
   };
 
   const filterFeatures = (features: Feature[]) => {
@@ -73,15 +75,15 @@ const FeaturesDisplay = (props: {
   };
 
   useEffect( () => {
-    if (!!props.allFeatures) {
-      const features = filterFeatures(props.allFeatures);
+    if (!!props.features) {
+      const features = filterFeatures(props.features);
       setFeatureCount(features.length);
-      setFilteredFeatures(features.slice(filters.count, filters.page * props.perPage));
+      setFilteredFeatures(features.slice(filters.count, filters.page * perPage));
       if (features.length === 0) setLastPage(1);
       else setLastPage(getLastPage(features));
       scrollTo({ y: 0 });
     }
-  }, [filters, props.allFeatures]);
+  }, [filters, props.features]);
 
   useEffect(() => {
     console.log(lastPage)

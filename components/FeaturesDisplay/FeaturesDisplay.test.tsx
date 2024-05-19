@@ -48,10 +48,9 @@ describe('Features Display Component', () => {
     render(
       <MantineProvider>
         <FeaturesDisplay
-          allFeatures={allFeatures}
+          features={allFeatures}
           categories={categories}
           categoryMap={categoryMap}
-          perPage={20}
         />
       </MantineProvider>
     );
@@ -99,10 +98,9 @@ describe('Features Display Component', () => {
     render(
       <MantineProvider>
         <FeaturesDisplay
-          allFeatures={allFeatures}
+          features={allFeatures}
           categories={categories}
           categoryMap={categoryMap}
-          perPage={20}
         />
       </MantineProvider>
     );
@@ -152,10 +150,9 @@ describe('Features Display Component', () => {
     render(
       <MantineProvider>
         <FeaturesDisplay
-          allFeatures={allFeatures}
+          features={allFeatures}
           categories={categories}
           categoryMap={categoryMap}
-          perPage={20}
         />
       </MantineProvider>
     );
@@ -213,10 +210,9 @@ describe('Features Display Component', () => {
     render(
       <MantineProvider>
         <FeaturesDisplay
-          allFeatures={allFeatures}
+          features={allFeatures}
           categories={categories}
           categoryMap={categoryMap}
-          perPage={20}
         />
       </MantineProvider>
     );

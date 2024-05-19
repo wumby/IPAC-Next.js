@@ -4,7 +4,7 @@ export const quickSort: any = (arr: Feature[]) => {
   if (arr.length <= 1) {
     return arr;
   }
-  const pivot = arr[arr.length - 1];
+  const pivot = arr[arr.length-1];
   const leftArr = [];
   const rightArr = [];
 
