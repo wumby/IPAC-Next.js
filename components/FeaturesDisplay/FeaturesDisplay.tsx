@@ -85,10 +85,6 @@ const FeaturesDisplay = (props: {
     }
   }, [filters, props.features]);
 
-  useEffect(() => {
-    console.log(lastPage);
-  }, [lastPage]);
-
   return (
     <>
       <Flex justify={'space-evenly'} align={'center'} style={{ width: '100%' }}>
