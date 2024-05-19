@@ -3,7 +3,7 @@ interface ShowProps {
   children: any;
 }
 
-const Show: React.FC<ShowProps> = (props) => {
+const Show = (props: ShowProps) => {
   return props.when ? <>{props.children}</> : null;
 };
 

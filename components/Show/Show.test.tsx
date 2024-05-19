@@ -11,7 +11,7 @@ test('it renders its children when props are true', () => {
     </MantineProvider>
   );
 
-  expect( screen.getByText('Show')).toBeInTheDocument();
+  expect(screen.getByText('Show')).toBeInTheDocument();
 });
 
 test('it doesnt render its children when props are false', () => {

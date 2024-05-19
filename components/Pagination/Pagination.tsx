@@ -8,7 +8,6 @@ const Pagination = (props: {
   setFilters: (filters: Filters) => void;
   featureCount: number;
 }) => {
-  
   const next = () => {
     props.setFilters({
       ...props.filters,
@@ -42,16 +41,11 @@ const Pagination = (props: {
 
   return (
     <Flex justify={'center'} align={'center'} style={{ width: '100%' }} m={'sm'}>
-      <Button
-      aria-label='first page'
-        disabled={props.filters.page <= 1}
-        onClick={first}
-        mr={'lg'}
-      >
+      <Button aria-label="first page" disabled={props.filters.page <= 1} onClick={first} mr={'lg'}>
         <FastArrowLeft></FastArrowLeft>
       </Button>
       <Button
-      aria-label='previous page'
+        aria-label="previous page"
         disabled={props.filters.page <= 1}
         onClick={prev}
         mr={'lg'}
@@ -60,7 +54,7 @@ const Pagination = (props: {
       </Button>
       <h3>{props.filters.page}</h3>
       <Button
-      aria-label='next page'
+        aria-label="next page"
         disabled={props.filters.page >= props.lastPage}
         onClick={next}
         ml={'lg'}
@@ -68,7 +62,7 @@ const Pagination = (props: {
         <NavArrowRight></NavArrowRight>
       </Button>
       <Button
-      aria-label='last page'
+        aria-label="last page"
         disabled={props.filters.page >= props.lastPage}
         onClick={last}
         ml={'lg'}
