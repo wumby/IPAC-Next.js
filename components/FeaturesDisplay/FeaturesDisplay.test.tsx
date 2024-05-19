@@ -47,7 +47,13 @@ describe('Features Display Component', () => {
     ]);
     render(
       <MantineProvider>
-        <FeaturesDisplay features={allFeatures} categories={categories} categoryMap={categoryMap} lastPage={1} perPage={20}/>
+        <FeaturesDisplay
+          features={allFeatures}
+          categories={categories}
+          categoryMap={categoryMap}
+          lastPage={1}
+          perPage={20}
+        />
       </MantineProvider>
     );
     const textbox = screen.getByRole('textbox', { name: 'Search' });
@@ -93,7 +99,13 @@ describe('Features Display Component', () => {
     ]);
     render(
       <MantineProvider>
-        <FeaturesDisplay features={allFeatures} categories={categories} categoryMap={categoryMap} lastPage={1} perPage={20}/>
+        <FeaturesDisplay
+          features={allFeatures}
+          categories={categories}
+          categoryMap={categoryMap}
+          lastPage={1}
+          perPage={20}
+        />
       </MantineProvider>
     );
     await userEvent.click(screen.getByRole('textbox', { name: 'Category' }));
@@ -141,7 +153,13 @@ describe('Features Display Component', () => {
     ]);
     render(
       <MantineProvider>
-        <FeaturesDisplay features={allFeatures} categories={categories} categoryMap={categoryMap} lastPage={1} perPage={20}/>
+        <FeaturesDisplay
+          features={allFeatures}
+          categories={categories}
+          categoryMap={categoryMap}
+          lastPage={1}
+          perPage={20}
+        />
       </MantineProvider>
     );
 
@@ -197,7 +215,13 @@ describe('Features Display Component', () => {
     ]);
     render(
       <MantineProvider>
-        <FeaturesDisplay features={allFeatures} categories={categories} categoryMap={categoryMap} lastPage={0} perPage={20}/>
+        <FeaturesDisplay
+          features={allFeatures}
+          categories={categories}
+          categoryMap={categoryMap}
+          lastPage={0}
+          perPage={20}
+        />
       </MantineProvider>
     );
 

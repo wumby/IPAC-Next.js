@@ -6,16 +6,17 @@ const FeaturesPage = () => {
   const categories = featuresData.data.featureCategories;
   const categoryMap: Map<number, string> = new Map();
   categories.map((category) => categoryMap.set(category.sid.id, category.name));
-  const perPage =20;
-  const lastPage=Math.ceil(features.length / perPage);
+  const perPage = 20;
+  const lastPage = Math.ceil(features.length / perPage);
   return (
     <>
-      <FeaturesDisplay 
-      features={features} 
-      categories={categories} 
-      categoryMap={categoryMap} 
-      lastPage={lastPage} 
-      perPage={perPage} />
+      <FeaturesDisplay
+        features={features}
+        categories={categories}
+        categoryMap={categoryMap}
+        lastPage={lastPage}
+        perPage={perPage}
+      />
     </>
   );
 };

@@ -14,7 +14,7 @@ const FeaturesDisplay = (props: {
   categories: Category[];
   categoryMap: Map<number, string>;
   lastPage: number;
-  perPage: number
+  perPage: number;
 }) => {
   const DEBOUNCE_TIME_MS = 500;
   const [, scrollTo] = useWindowScroll();
