@@ -72,16 +72,20 @@ const FeaturesDisplay = (props: {
     return features;
   };
 
-  useEffect(() => {
+  useEffect( () => {
     if (!!props.allFeatures) {
       const features = filterFeatures(props.allFeatures);
-      setFilteredFeatures(features.slice(filters.count, filters.page * props.perPage));
-      if (filteredFeatures.length === 0) setLastPage(1);
-      else setLastPage(getLastPage(features));
       setFeatureCount(features.length);
+      setFilteredFeatures(features.slice(filters.count, filters.page * props.perPage));
+      if (features.length === 0) setLastPage(1);
+      else setLastPage(getLastPage(features));
       scrollTo({ y: 0 });
     }
   }, [filters, props.allFeatures]);
+
+  useEffect(() => {
+    console.log(lastPage)
+  }, [lastPage]);
 
   return (
     <>
