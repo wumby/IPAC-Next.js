@@ -7,7 +7,7 @@ describe('Quicksort function', () => {
       { sid: { id: 3 }, displayName: 'apple', epKeywords: ['keywords'], categorySid: { id: 1 } },
       { sid: { id: 2 }, displayName: 'bamboo', epKeywords: ['keywords'], categorySid: { id: 1 } },
       { sid: { id: 1 }, displayName: 'zoo', epKeywords: ['keywords'], categorySid: { id: 1 } },
-      
+
       { sid: { id: 4 }, displayName: 'kangaroo', epKeywords: ['keywords'], categorySid: { id: 1 } },
       { sid: { id: 5 }, displayName: 'jesse', epKeywords: ['keywords'], categorySid: { id: 1 } },
       { sid: { id: 6 }, displayName: 'gus', epKeywords: ['keywords'], categorySid: { id: 1 } },

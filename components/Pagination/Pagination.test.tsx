@@ -6,7 +6,6 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 describe('Pagination Component', () => {
-
   test('it goes to last page when last page clicked', async () => {
     const PaginationWrapper = () => {
       const [filters, setFilters] = useState<Filters>({ s: '', page: 1, count: 40, category: '0' });

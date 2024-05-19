@@ -31,7 +31,7 @@ const FeaturesDisplay = (props: {
     value: item.sid.id.toString(),
     label: item.name,
   }));
-  const perPage=20;
+  const perPage = 20;
 
   const handleSearch = useDebouncedCallback(async (query: string) => {
     setFilters({
@@ -74,7 +74,7 @@ const FeaturesDisplay = (props: {
     return features;
   };
 
-  useEffect( () => {
+  useEffect(() => {
     if (!!props.features) {
       const features = filterFeatures(props.features);
       setFeatureCount(features.length);
@@ -86,7 +86,7 @@ const FeaturesDisplay = (props: {
   }, [filters, props.features]);
 
   useEffect(() => {
-    console.log(lastPage)
+    console.log(lastPage);
   }, [lastPage]);
 
   return (
