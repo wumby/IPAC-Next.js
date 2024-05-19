@@ -8,16 +8,17 @@ import Pagination from '../Pagination/Pagination';
 import FeaturesCards from '../FeaturesCards/FeaturesCards';
 import { useDebouncedCallback, useWindowScroll } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
-import { features } from 'process';
 
 const FeaturesDisplay = (props: {
   features: Feature[];
   categories: Category[];
   categoryMap: Map<number, string>;
+  lastPage: number;
+  perPage: number
 }) => {
   const DEBOUNCE_TIME_MS = 500;
   const [, scrollTo] = useWindowScroll();
-  const [lastPage, setLastPage] = useState(0);
+  const [lastPage, setLastPage] = useState(props.lastPage);
   const [filters, setFilters] = useState<Filters>({
     s: '',
     page: 1,
@@ -31,7 +32,6 @@ const FeaturesDisplay = (props: {
     value: item.sid.id.toString(),
     label: item.name,
   }));
-  const perPage = 20;
 
   const handleSearch = useDebouncedCallback(async (query: string) => {
     setFilters({
@@ -52,7 +52,7 @@ const FeaturesDisplay = (props: {
   };
 
   const getLastPage = (features: Feature[]) => {
-    return Math.ceil(features.length / perPage);
+    return Math.ceil(features.length / props.perPage);
   };
 
   const filterFeatures = (features: Feature[]) => {
@@ -78,7 +78,7 @@ const FeaturesDisplay = (props: {
     if (!!props.features) {
       const features = filterFeatures(props.features);
       setFeatureCount(features.length);
-      setFilteredFeatures(features.slice(filters.count, filters.page * perPage));
+      setFilteredFeatures(features.slice(filters.count, filters.page * props.perPage));
       if (features.length === 0) setLastPage(1);
       else setLastPage(getLastPage(features));
       scrollTo({ y: 0 });
