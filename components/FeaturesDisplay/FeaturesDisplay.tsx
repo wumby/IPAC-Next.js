@@ -58,7 +58,7 @@ const FeaturesDisplay = (props: {
   const filterFeatures = (features: Feature[]) => {
     if (filters.category !== '0' && filters.category !== null) {
       if (featureMap.has(filters.category + filters.s)) {
-        return features = featureMap.get(filters.category + filters.s)!;
+        features = featureMap.get(filters.category + filters.s)!;
       } else {
         features = features.filter((f) => f.categorySid.id === parseInt(filters.category));
         setFeatureMap((map) => new Map(map.set(filters.category + filters.s, features)));
