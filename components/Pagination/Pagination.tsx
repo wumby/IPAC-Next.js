@@ -7,12 +7,13 @@ const Pagination = (props: {
   lastPage: number;
   setFilters: (filters: Filters) => void;
   featureCount: number;
+  perPage: number;
 }) => {
   const next = () => {
     props.setFilters({
       ...props.filters,
       page: props.filters.page + 1,
-      count: props.filters.count + 20,
+      count: props.filters.count + props.perPage,
     });
   };
 
@@ -20,7 +21,7 @@ const Pagination = (props: {
     props.setFilters({
       ...props.filters,
       page: props.filters.page - 1,
-      count: props.filters.count - 20,
+      count: props.filters.count - props.perPage,
     });
   };
   const first = () => {
@@ -35,7 +36,7 @@ const Pagination = (props: {
     props.setFilters({
       ...props.filters,
       page: props.lastPage,
-      count: props.featureCount - (props.featureCount % 20 === 0 ? 20 : props.featureCount % 20),
+      count: props.featureCount - (props.featureCount % props.perPage === 0 ? props.perPage : props.featureCount % props.perPage),
     });
   };
 

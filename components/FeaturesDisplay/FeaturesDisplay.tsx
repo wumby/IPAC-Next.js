@@ -106,6 +106,7 @@ const FeaturesDisplay = (props: {
           featureCount={featureCount}
           lastPage={lastPage}
           setFilters={setFilters}
+          perPage={props.perPage}
         ></Pagination>
         <FeaturesCards features={filteredFeatures} categoryMap={props.categoryMap} />
         <Pagination
@@ -113,6 +114,7 @@ const FeaturesDisplay = (props: {
           featureCount={featureCount}
           lastPage={lastPage}
           setFilters={setFilters}
+          perPage={props.perPage}
         ></Pagination>
       </Show>
       <Show when={filteredFeatures.length === 0}>
