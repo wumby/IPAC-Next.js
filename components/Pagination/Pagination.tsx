@@ -36,7 +36,11 @@ const Pagination = (props: {
     props.setFilters({
       ...props.filters,
       page: props.lastPage,
-      count: props.featureCount - (props.featureCount % props.perPage === 0 ? props.perPage : props.featureCount % props.perPage),
+      count:
+        props.featureCount -
+        (props.featureCount % props.perPage === 0
+          ? props.perPage
+          : props.featureCount % props.perPage),
     });
   };
 

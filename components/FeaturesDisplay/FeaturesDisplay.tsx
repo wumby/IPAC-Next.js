@@ -56,32 +56,31 @@ const FeaturesDisplay = (props: {
   };
 
   const filterFeatures = (features: Feature[]) => {
-      if (featureMap.has(filters.category + filters.s)) {
-        return features = featureMap.get(filters.category + filters.s)!;
-      } 
-      else {
-        if(filters.category !=='0' && filters.category !== null){
-          features = features.filter((f) => f.categorySid.id === parseInt(filters.category));
-        }
-        if (!!filters.s.length) {
-          features = features.filter(
-            (f) =>
-              f.displayName.toLowerCase().includes(filters.s.toLowerCase()) ||
-              f.epKeywords.find((keyword) => keyword.toLowerCase().includes(filters.s.toLowerCase()))
-          );
-        }
-        setFeatureMap((map) => new Map(map.set(filters.category + filters.s, features)));
+    if (featureMap.has(filters.category + filters.s)) {
+      return (features = featureMap.get(filters.category + filters.s)!);
+    } else {
+      if (filters.category !== '0' && filters.category !== null) {
+        features = features.filter((f) => f.categorySid.id === parseInt(filters.category));
       }
+      if (!!filters.s.length) {
+        features = features.filter(
+          (f) =>
+            f.displayName.toLowerCase().includes(filters.s.toLowerCase()) ||
+            f.epKeywords.find((keyword) => keyword.toLowerCase().includes(filters.s.toLowerCase()))
+        );
+      }
+      setFeatureMap((map) => new Map(map.set(filters.category + filters.s, features)));
+    }
     return features;
   };
 
   useEffect(() => {
-      const features = filterFeatures(props.features);
-      setFeatureCount(features.length);
-      setFilteredFeatures(features.slice(filters.count, filters.page * props.perPage));
-      if (features.length === 0) setLastPage(1);
-      else setLastPage(getLastPage(features));
-      scrollTo({ y: 0 });
+    const features = filterFeatures(props.features);
+    setFeatureCount(features.length);
+    setFilteredFeatures(features.slice(filters.count, filters.page * props.perPage));
+    if (features.length === 0) setLastPage(1);
+    else setLastPage(getLastPage(features));
+    scrollTo({ y: 0 });
   }, [filters, props.features]);
 
   return (

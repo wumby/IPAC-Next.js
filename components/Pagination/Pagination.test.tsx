@@ -11,7 +11,13 @@ describe('Pagination Component', () => {
       const [filters, setFilters] = useState<Filters>({ s: '', page: 1, count: 40, category: '0' });
       return (
         <>
-          <Pagination filters={filters} lastPage={3} featureCount={50} setFilters={setFilters} perPage={20} />
+          <Pagination
+            filters={filters}
+            lastPage={3}
+            featureCount={50}
+            setFilters={setFilters}
+            perPage={20}
+          />
         </>
       );
     };
@@ -30,7 +36,13 @@ describe('Pagination Component', () => {
       const [filters, setFilters] = useState<Filters>({ s: '', page: 1, count: 40, category: '0' });
       return (
         <>
-          <Pagination filters={filters} lastPage={3} featureCount={40} setFilters={setFilters} perPage={20}/>
+          <Pagination
+            filters={filters}
+            lastPage={3}
+            featureCount={40}
+            setFilters={setFilters}
+            perPage={20}
+          />
         </>
       );
     };
@@ -49,7 +61,13 @@ describe('Pagination Component', () => {
       const [filters, setFilters] = useState<Filters>({ s: '', page: 1, count: 0, category: '0' });
       return (
         <>
-          <Pagination filters={filters} lastPage={3} featureCount={50} setFilters={setFilters} perPage={20}/>
+          <Pagination
+            filters={filters}
+            lastPage={3}
+            featureCount={50}
+            setFilters={setFilters}
+            perPage={20}
+          />
         </>
       );
     };
@@ -68,7 +86,13 @@ describe('Pagination Component', () => {
       const [filters, setFilters] = useState<Filters>({ s: '', page: 3, count: 40, category: '0' });
       return (
         <>
-          <Pagination filters={filters} lastPage={3} featureCount={50} setFilters={setFilters} perPage={20}/>
+          <Pagination
+            filters={filters}
+            lastPage={3}
+            featureCount={50}
+            setFilters={setFilters}
+            perPage={20}
+          />
         </>
       );
     };
@@ -87,7 +111,13 @@ describe('Pagination Component', () => {
       const [filters, setFilters] = useState<Filters>({ s: '', page: 3, count: 40, category: '0' });
       return (
         <>
-          <Pagination filters={filters} lastPage={3} featureCount={50} setFilters={setFilters} perPage={20}/>
+          <Pagination
+            filters={filters}
+            lastPage={3}
+            featureCount={50}
+            setFilters={setFilters}
+            perPage={20}
+          />
         </>
       );
     };
@@ -106,7 +136,13 @@ describe('Pagination Component', () => {
       const [filters, setFilters] = useState<Filters>({ s: '', page: 1, count: 0, category: '0' });
       return (
         <>
-          <Pagination filters={filters} lastPage={1} featureCount={1} setFilters={setFilters} perPage={20}/>
+          <Pagination
+            filters={filters}
+            lastPage={1}
+            featureCount={1}
+            setFilters={setFilters}
+            perPage={20}
+          />
         </>
       );
     };
@@ -127,7 +163,13 @@ describe('Pagination Component', () => {
       const [filters, setFilters] = useState<Filters>({ s: '', page: 1, count: 0, category: '0' });
       return (
         <>
-          <Pagination filters={filters} lastPage={2} featureCount={24} setFilters={setFilters} perPage={20}/>
+          <Pagination
+            filters={filters}
+            lastPage={2}
+            featureCount={24}
+            setFilters={setFilters}
+            perPage={20}
+          />
         </>
       );
     };
@@ -148,7 +190,13 @@ describe('Pagination Component', () => {
       const [filters, setFilters] = useState<Filters>({ s: '', page: 2, count: 20, category: '0' });
       return (
         <>
-          <Pagination filters={filters} lastPage={1} featureCount={24} setFilters={setFilters} perPage={20}/>
+          <Pagination
+            filters={filters}
+            lastPage={1}
+            featureCount={24}
+            setFilters={setFilters}
+            perPage={20}
+          />
         </>
       );
     };
@@ -169,7 +217,13 @@ describe('Pagination Component', () => {
       const [filters, setFilters] = useState<Filters>({ s: '', page: 2, count: 20, category: '0' });
       return (
         <>
-          <Pagination filters={filters} lastPage={4} featureCount={80} setFilters={setFilters} perPage={20}/>
+          <Pagination
+            filters={filters}
+            lastPage={4}
+            featureCount={80}
+            setFilters={setFilters}
+            perPage={20}
+          />
         </>
       );
     };
