@@ -76,14 +76,12 @@ const FeaturesDisplay = (props: {
   };
 
   useEffect(() => {
-    if (!!filters) {
       const features = filterFeatures(props.features);
       setFeatureCount(features.length);
       setFilteredFeatures(features.slice(filters.count, filters.page * props.perPage));
       if (features.length === 0) setLastPage(1);
       else setLastPage(getLastPage(features));
       scrollTo({ y: 0 });
-    }
   }, [filters, props.features]);
 
   return (
