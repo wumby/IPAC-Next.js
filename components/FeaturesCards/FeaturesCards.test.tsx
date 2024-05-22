@@ -34,7 +34,7 @@ describe('Features Cards Component', () => {
       </MantineProvider>
     );
 
-    expect(screen.getByText('test category')).toBeInTheDocument();
+    expect(screen.getByText('Category: test category')).toBeInTheDocument();
   });
 
   test('it renders keywords when we have keywords', () => {
@@ -44,7 +44,7 @@ describe('Features Cards Component', () => {
       </MantineProvider>
     );
 
-    const keywords = screen.queryByText('Keywords:');
+    const keywords = screen.queryByText('Keywords: keywords');
 
     expect(keywords).toBeTruthy();
   });
