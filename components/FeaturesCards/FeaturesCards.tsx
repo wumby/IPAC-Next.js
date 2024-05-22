@@ -15,17 +15,15 @@ const FeaturesCards = (props: { features: Feature[]; categoryMap: Map<number, st
             key={Features.sid.id}
           >
             <Paper withBorder p={'xs'} style={{ width: '100%' }}>
-              <Flex justify={'center'} wrap={'wrap'}>
-                <strong>{Features.displayName}</strong>
+              <Flex justify={'center'} wrap={'wrap'} m={0}>
+                <h3 style={{margin:0}}>{Features.displayName}</h3>
               </Flex>
               <Flex justify={'center'}>
-                <span> Category: &nbsp;</span>
-                <span>{props.categoryMap.get(Features.categorySid.id)}</span>
+                <span> Category: {props.categoryMap.get(Features.categorySid.id)}</span>
               </Flex>
               <Show when={!!Features.epKeywords.length}>
                 <Flex justify={'center'} wrap={'wrap'}>
-                  <span>Keywords: &nbsp;</span>
-                  <span>{Features.epKeywords.join(', ')}</span>
+                  <span>Keywords: {Features.epKeywords.join(', ')}</span>
                 </Flex>
               </Show>
             </Paper>
